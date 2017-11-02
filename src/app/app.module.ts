@@ -6,10 +6,14 @@ import {NgModule} from '@angular/core';
 import {SharedModule} from './shared/shared.module';
 
 import {AppComponent} from './app.component';
+import { DialogComponent } from './dialog-wrapper/dialog-wrapper.component';
+import { DialogWrapperComponent } from './dialog-wrapper/dialog-wrapper.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DialogComponent,
+    DialogWrapperComponent
   ],
   imports: [
     BrowserModule,
@@ -21,6 +25,9 @@ import {AppComponent} from './app.component';
   bootstrap: [AppComponent],
   exports: [
     SharedModule
+  ],
+  entryComponents: [
+    DialogComponent
   ]
 })
 export class AppModule {

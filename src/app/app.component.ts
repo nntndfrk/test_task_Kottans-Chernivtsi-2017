@@ -4,6 +4,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/observable/fromEvent';
 import {Subject} from 'rxjs/Subject';
 
+import {shuffle} from './shared/scripts/shuffle';
 
 @Component({
   selector: 'app-root',
@@ -21,14 +22,6 @@ export class AppComponent implements OnInit {
     this.subject.next(this.enterString);
   }
 
-  public shuffle(a) {
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-  }
-
   ngOnInit() {
     this.updateString(this.numbers);
     this.subject.debounceTime(1000).subscribe(() => {
@@ -44,7 +37,7 @@ export class AppComponent implements OnInit {
 
   public shuffleNumbers() {
     if (this.numbers.length > 1) {
-      const copyNumbers = this.shuffle(this.numbers.slice());
+      const copyNumbers = shuffle(this.numbers.slice());
       this.updateString(copyNumbers);
     }
   }
@@ -67,11 +60,4 @@ export class AppComponent implements OnInit {
       this.updateString();
     }
   }
-
-  openDialog() {
-    if (this.numbers.length > 0) {
-      alert(this.numbers.join(''));
-    }
-  }
-
 }

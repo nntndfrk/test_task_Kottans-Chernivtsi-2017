@@ -84,11 +84,7 @@
       >9</button>
     </mat-grid-tile>
     <mat-grid-tile>
-      <button
-        mat-raised-button
-        style="margin-left: 24px; background-color: #0a9356;"
-        (click)="openDialog()"
-      >Enter</button>
+      <app-dialog-wrapper [inputString]="numbers.join('')"></app-dialog-wrapper>
     </mat-grid-tile>
     <mat-grid-tile>
       <button
